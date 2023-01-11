@@ -9,11 +9,14 @@ public class UserInfoResponse {
     private String email;
     private List<String> roles;
 
-    public UserInfoResponse(Long id, String username, String email, List<String> roles) {
+    private String authenticationToken;
+
+    public UserInfoResponse(Long id, String username, String email, List<String> roles, String authenticationToken) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.roles = roles;
+        this.authenticationToken = authenticationToken;
     }
 
     public Long getId() {
@@ -42,5 +45,13 @@ public class UserInfoResponse {
 
     public List<String> getRoles() {
         return roles;
+    }
+
+    public String getAuthenticationToken() {
+        return authenticationToken;
+    }
+
+    public void setAuthenticationToken(String authenticationToken) {
+        this.authenticationToken = authenticationToken;
     }
 }
