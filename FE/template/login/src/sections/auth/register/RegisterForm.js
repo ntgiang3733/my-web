@@ -10,19 +10,17 @@ import AuthService from '../../../services/auth.service';
 
 // ----------------------------------------------------------------------
 
-export default function LoginForm() {
+export default function RegisterForm() {
     // const navigate = useNavigate();
 
+    const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const [showPassword, setShowPassword] = useState(false);
 
     const handleClick = () => {
-        console.log(
-            username, password
-        );
-        AuthService.login(username, password);
+        AuthService.register(username, email, password);
     };
 
     return (
@@ -33,6 +31,13 @@ export default function LoginForm() {
                     label="Username" 
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
+                />
+
+                <TextField 
+                    name="email" 
+                    label="Email" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <TextField
@@ -61,7 +66,7 @@ export default function LoginForm() {
             </Stack>
 
             <LoadingButton fullWidth size="large" type="submit" variant="contained" onClick={handleClick}>
-                Login
+                Register
             </LoadingButton>
         </>
     );
